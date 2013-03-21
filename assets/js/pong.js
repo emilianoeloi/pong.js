@@ -1,5 +1,5 @@
-var WIDTH = 600;
-var HEIGHT = 400;
+var WIDTH = 700;
+var HEIGHT = 500;
 var BALL_RADIUS = 20;
 var PAD_WIDTH = 8;
 var PAD_HEIGHT = 80;
@@ -12,6 +12,7 @@ var w;
 var s;
 var _canvasContext;
 var CANVAS_ELEMENT_ID = 'tela';
+var _pause = false;
 
 Dbg = {
    log: function(k,v){
@@ -24,13 +25,15 @@ Dbg = {
 
 function randRange (min, max) {
     return Math.random() * (max - min) + min;
+
 }
 function getCanvasContext(idElement){
     if (idElement === undefined) {
         idElement = CANVAS_ELEMENT_ID;
     }
-    if(_canvasContext !== null && _canvasContext !== undefined)
+    if(_canvasContext !== null && _canvasContext !== undefined){
         return _canvasContext;
+    }
 
     var c = document.getElementById(idElement);
     $("#"+idElement).css("width",WIDTH+"px").css("height",HEIGHT+"px");
@@ -46,14 +49,14 @@ function drawLine(p1, p2, b, c){
     getCanvasContext().lineWidth = b;
     getCanvasContext().strokeStyle = c;
     getCanvasContext().beginPath();
-    getCanvasContext().moveTo(p1[0],p1[0]);
-    getCanvasContext().lineTo(p2[1],p2[1]);
+    getCanvasContext().moveTo(p1[0],p1[1]);
+    getCanvasContext().lineTo(p2[0],p2[1]);
     getCanvasContext().stroke();
-    getCanvasContext().closePath();
 }
 function drawCircle(x, y, r, d, c){
     getCanvasContext().strokeStyle = c;
-    getCanvasContext().arc(x,y,r,d,Math.PI*2,true);
+    getCanvasContext().beginPath();
+    getCanvasContext().arc(x,y,r,0,Math.PI*2,true);
     getCanvasContext().stroke();
 }
 function drawText(text, p1, s, c){
@@ -62,10 +65,18 @@ function drawText(text, p1, s, c){
     getCanvasContext().fillText(text, p1[0], p1[1]);
 }
 function drawRect(x, y, w, h){
+    return;
     getCanvasContext().fillRect(x,y,w,h);
 }
 function createFrame(n,w,h){
     drawRect(0,0,w,h);
+}
+function startFrame(){
+    if(!_pause){
+        getCanvasContext().clearRect(0, 0, WIDTH, HEIGHT);
+        draw();
+    }
+    setTimeout('startFrame()',1000 / 60);
 }
 
 function ball_init(right){
@@ -148,13 +159,14 @@ function draw(c){
         ball_init(1)
     }
 
-    drawCircle(ball_pos[0], ball_pos[1], radius, 8, "Green");
-    drawText(count1, [WIDTH/4, HEIGHT/4], 36, "Red");
-    drawText(count2, [3*WIDTH/4, HEIGHT/4], 36, "Red");
+    drawCircle(ball_pos[0], ball_pos[1], radius, 8, "White");
+    drawText(count1, [WIDTH/4, HEIGHT/4], 36, "White");
+    drawText(count2, [3*WIDTH/4, HEIGHT/4], 36, "White");
 
 }
 
 function keydown(key){
+    Dbg.log('keydown', key);
     if(key==="down"){
         s1=s1+1;
         paddle1_vel=s1;
@@ -171,6 +183,7 @@ function keydown(key){
 }
 
 function keyup(key){
+    Dbg.log('keyup', key);
     if (key==="down"){
         s2=w2;
         paddle1_vel=0;
@@ -185,8 +198,15 @@ function keyup(key){
         paddle1_vel=0;
     }
 }
+
 function addButton(){
     init();
+    _pause = false;
+    startFrame();
+}
+function pauseButton(){
+    _pause = !_pause;
+    drawText('pausado', [WIDTH/2-50, HEIGHT/2-20], 36, "White");
 }
 createFrame("Pong", WIDTH, HEIGHT);
 //setDrawHandler("draw");
@@ -228,4 +248,11 @@ $(document).ready(function(){
     $(window).keyup(function(e){
         keyup(getLetter(e.which));
     });
+    $(".btn.start").click(function(){
+        addButton();
+    });
+    $(".btn.restart").click(function(){
+        pauseButton();
+    });
+
 })
