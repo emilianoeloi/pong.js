@@ -57,3 +57,7 @@ div, section, footer, aside, header{
     top: 185px;
     left: 18px;
 }
+#qr{
+    margin-left: 140px;
+    margin-top: 40px;
+}

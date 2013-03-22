@@ -14,60 +14,7 @@ var _canvasContext;
 var CANVAS_ELEMENT_ID = 'tela';
 var _pause = false;
 
-Dbg = {
-   log: function(k,v){
-        if(window.console && window.console.log)
-            console.log(k,v);
-        else
-            alert(k+': '+v);
-   }
-}
 
-function randRange (min, max) {
-    return Math.random() * (max - min) + min;
-
-}
-function getCanvasContext(idElement){
-    if (idElement === undefined) {
-        idElement = CANVAS_ELEMENT_ID;
-    }
-    if(_canvasContext !== null && _canvasContext !== undefined){
-        return _canvasContext;
-    }
-
-    var c = document.getElementById(idElement);
-    $("#"+idElement).css("width",WIDTH+"px").css("height",HEIGHT+"px");
-    if (c.getContext){
-        _canvasContext = c.getContext('2d');
-        return _canvasContext;
-    }else{
-        throw "Não serei capaz de desenhar aqui.";
-    }
-
-}
-function drawLine(p1, p2, b, c){
-    getCanvasContext().lineWidth = b;
-    getCanvasContext().strokeStyle = c;
-    getCanvasContext().beginPath();
-    getCanvasContext().moveTo(p1[0],p1[1]);
-    getCanvasContext().lineTo(p2[0],p2[1]);
-    getCanvasContext().stroke();
-}
-function drawCircle(x, y, r, d, c){
-    getCanvasContext().strokeStyle = c;
-    getCanvasContext().beginPath();
-    getCanvasContext().arc(x,y,r,0,Math.PI*2,true);
-    getCanvasContext().stroke();
-}
-function drawText(text, p1, s, c){
-    getCanvasContext().font = s +"px Times New Roman";
-    getCanvasContext().fillStyle = c;
-    getCanvasContext().fillText(text, p1[0], p1[1]);
-}
-function drawRect(x, y, w, h){
-    return;
-    getCanvasContext().fillRect(x,y,w,h);
-}
 function createFrame(n,w,h){
     drawRect(0,0,w,h);
 }
@@ -128,16 +75,16 @@ function draw(c){
     ball_pos[0] = ball_pos[0]+ball_vel[0];
     ball_pos[1] = ball_pos[1]+ball_vel[1];
     if(ball_pos[0]<=paddle1_pos[0]+radius+HALF_PAD_WIDTH &&
-       ball_pos[1]>=paddle1_pos[1] &&
-       ball_pos[1]<=paddle1_pos[1]+PAD_HEIGHT){
+        ball_pos[1]>=paddle1_pos[1] &&
+        ball_pos[1]<=paddle1_pos[1]+PAD_HEIGHT){
         ball_pos[0] == paddle1_pos[0];
         ball_vel[0] = ball_vel[0]*-1.1;
         ball_vel[1] = ball_vel[1]*1.1;
     }
 
     if(ball_pos[0]>=paddle2_pos[0]-radius-HALF_PAD_WIDTH &&
-       ball_pos[1]>=paddle2_pos[1] &&
-       ball_pos[1]<=paddle2_pos[1]+PAD_HEIGHT){
+        ball_pos[1]>=paddle2_pos[1] &&
+        ball_pos[1]<=paddle2_pos[1]+PAD_HEIGHT){
         ball_pos[0]==paddle2_pos[0];
         ball_vel[0]=ball_vel[0]*-1.1;
         ball_vel[1]=ball_vel[1]*1.1;
@@ -255,4 +202,4 @@ $(document).ready(function(){
         pauseButton();
     });
 
-})
+});
