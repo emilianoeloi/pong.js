@@ -14,3 +14,6 @@ socket.on('keyup', function (data) {
     keyup(data.key);
 //keyup(data.action);
 });
+socket.on('changeColor', function (data) {
+    changeColor(data.color);
+});

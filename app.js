@@ -17,6 +17,15 @@ app.get('/mb', function (req, res) {
     });
 });
 
+app.get('/color/:id/:color', function (req, res) {
+    var id = req.params.id;
+    var color = req.params.color;
+    sockets[id].emit('changeColor', {
+        color: color
+    });
+    res.send('ok');
+});
+
 app.get('/pongjs/:id/:key/:direction', function (req, res) {
     var id = req.params.id;
     var key = req.params.key;
@@ -30,7 +39,7 @@ app.get('/pongjs/:id/:key/:direction', function (req, res) {
             key: key
         });
     }else{
-       sockets[id].emit('keyup', {
+        sockets[id].emit('keyup', {
             key: key
         });
     }

@@ -13,6 +13,7 @@ var s;
 var _canvasContext;
 var CANVAS_ELEMENT_ID = 'tela';
 var _pause = false;
+var _colorPaddle1 = "White";
 
 
 function createFrame(n,w,h){
@@ -69,7 +70,7 @@ function draw(c){
     drawLine([PAD_WIDTH, 0],[PAD_WIDTH, HEIGHT], 1, "White");
     drawLine([WIDTH - PAD_WIDTH, 0],[WIDTH - PAD_WIDTH, HEIGHT], 1, "White");
 
-    drawLine([paddle1_pos[0], paddle1_pos[1]],[paddle1_pos[0],paddle1_pos[1]+ PAD_HEIGHT], PAD_WIDTH, "White");
+    drawLine([paddle1_pos[0], paddle1_pos[1]],[paddle1_pos[0],paddle1_pos[1]+ PAD_HEIGHT], PAD_WIDTH, _colorPaddle1);
     drawLine([paddle2_pos[0], paddle2_pos[1]],[paddle2_pos[0], paddle2_pos[1]+PAD_HEIGHT], PAD_WIDTH, "White");
 
     ball_pos[0] = ball_pos[0]+ball_vel[0];
@@ -144,6 +145,11 @@ function keyup(key){
         s1=w1;
         paddle1_vel=0;
     }
+}
+function changeColor(color){
+    Dbg.log('color', color);
+    Dbg.log('_colorPaddle1', _colorPaddle1);
+    _colorPaddle1 = color;
 }
 
 function addButton(){
