@@ -127,7 +127,7 @@ var _chamadaBaixo = true;
         }
     });
 })( jQuery );
-var URL_EXPRESS = 'http://192.168.0.10:8000/'
+var URL_EXPRESS = 'http://emiliano.bocamuchas.org:10080/'
 function pressUrl(key, direction){
     var url = [];
     url.push(URL_EXPRESS);
@@ -144,7 +144,7 @@ function pressUrl(key, direction){
 $(document).bind('pageinit', function() {
 
     // Socket.io
-    var socket = io.connect('http://192.168.0.10:8080');
+    var socket = io.connect('http://emiliano.bocamuchas.org:8080');
     var id = $('body').attr('id');
 
     socket.emit('setId', id + 'mb');
