@@ -84,7 +84,7 @@ var _chamadaBaixo = true;
         _refresh: function() {
             var o = this.options, newValue;
             if ( o.popupEnabled ) {
-                // remove the title attribute from the handle (which is
+                // remove the _title attribute from the handle (which is
                 // responsible for the annoying tooltip); NB we have
                 // to do it here as the jqm slider sets it every time
                 // the slider's value changes :(

@@ -1,0 +1,7 @@
+function Language(){
+
+};
+
+Language.protopype = {
+    }
+

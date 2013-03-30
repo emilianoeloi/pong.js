@@ -13,7 +13,7 @@ app.get('/mb', function (req, res) {
     //console.log(id);
     res.render('mobile.jade', {
         id:'', 
-        title:'Telejogo.JS | Controle'
+        _title:'Telejogo.JS | Controle'
     });
 });
 

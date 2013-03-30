@@ -1,9 +1,10 @@
 *, html{
     margin: 0;
     padding: 0;
+    font-family: Arial;
 }
 body{
-    background: #27282C url(../img/bg.jpg) no-repeat;
+    background: #27282C url(../img/bg.png) no-repeat;
 }
 div, section, footer, aside, header{
     border:1px dotted transparent;
@@ -42,20 +43,69 @@ div, section, footer, aside, header{
 }
 .btn{
     width: 50px;
-    height: 50px;
+    height: 70px;
     cursor: pointer;
-    text-indent: 50;
+    text-align: center;
     font-weight: bold;
+    text-transform: uppercase;
+    font-size: .7em;
 }
 .start{
     position: absolute;
-    top: 79px;
+    top: 60px;
     left: 18px;
 }
-.restart{
+.pause{
     position: absolute;
-    top: 185px;
+    top: 165px;
     left: 18px;
+}
+
+.btn3{
+    position: absolute;
+    top: 248px;
+    left: 18px;
+}
+.lang-selector{
+    position: absolute;
+    top: 188px;
+    left: 132px;
+    width: 122px;
+    height: 122px;
+}
+.lang-selector-es{
+    background: url(../img/selector-es.png) no-repeat;
+}
+.lang-selector-en{
+    background: url(../img/selector-en.png) no-repeat;
+}
+.lang-selector-pt{
+    background: url(../img/selector-pt.png) no-repeat;
+}
+.lang{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+}
+.lang.es{
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg); /* IE 9 */
+    -webkit-transform: rotate(-45deg); /* Safari and Chrome */
+    -o-transform: rotate(-45deg); /* Opera */
+    -moz-transform: rotate(-45deg); /* Firefox */
+}
+.lang.en{
+    left: 50;
+    top: -20;
+}
+.lang.pt{
+    left: 100;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
 }
 #qr{
     margin-left: 140px;

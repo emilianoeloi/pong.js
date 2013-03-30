@@ -194,18 +194,77 @@ function getLetter(which){
     return letter;
 }
 
+function changeLanguage(lang){
+
+}
+var tv;
+function getTV(){
+    if(!tv)
+        tv = new TV();
+    return tv;
+}
+var language;
+function setLanguage(language){
+    this.language = language;
+}
+function getLanguage(){
+    if(!language)
+        language = DEFAULT_LANGUAGE;
+    return language;
+}
+
+function loadScreen(){
+    $(".terms-game-name").text(getLanguage().terms.gameName);
+    $(".terms-reset-button").text(getLanguage().terms.resetButton);
+    $(".terms-pause-button").text(getLanguage().terms.pauseButton);
+
+    var bgSelector = [];
+    bgSelector.push("url(");
+    bgSelector.push(URL);
+    bgSelector.push(IMG);
+    bgSelector.push("selector-");
+    bgSelector.push(getLanguage().acronym);
+    bgSelector.push(".png)");
+    $(".lang-selector").css("background",  bgSelector.join('') );
+}
+
 $(document).ready(function(){
+
     $(window).keydown(function(e){
         keydown(getLetter(e.which));
     });
+
     $(window).keyup(function(e){
         keyup(getLetter(e.which));
     });
+
     $(".btn.start").click(function(){
         addButton();
     });
-    $(".btn.restart").click(function(){
+
+    $(".btn.pause").click(function(){
         pauseButton();
     });
+
+    $(".btn.lang").click(function(){
+       switch($(this).text().toLowerCase()){
+           case "es":
+               setLanguage(LANGUAGES.es);
+               break;
+           case "en":
+               setLanguage(LANGUAGES.en);
+               break;
+           case "pt":
+               setLanguage(LANGUAGES.pt);
+               break;
+           default:
+               setLanguage(DEFAULT_LANGUAGE);
+               break;
+
+       }
+        loadScreen();
+    });
+
+    loadScreen();
 
 });
