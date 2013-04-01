@@ -8,10 +8,17 @@
     </head>
     <body>
         <section class="container">
-            <aside class="tela">
-                <div id="qr-"></div>
-                <div id="qr"></div>
-                <canvas id="tela" width="700" height="500"></canvas>
+            <aside class="screen">
+                <div class="joystick one">
+                    <h3 class="terms-joystick">{{joystick}}</h3>
+                    <span class="message">{{message}}</span>
+                    <div class="qr"></div>
+                </div>
+                <div class="joystick two">
+                    <h3 class="terms-joystick">{{joystick}}</h3>
+                    <span class="message">{{message}}</span>
+                </div>
+                <canvas id="pong" width="700" height="500"></canvas>
             </aside>
             <aside class="controle">
                 <h1 class="terms-game-name">{{game-name}}</h1>
@@ -24,15 +31,17 @@
                         <div class="btn lang en">EN</div>
                         <div class="btn lang pt">PT</div>
                     </div>
+                    <input type="text" class="text input id" />
                 </div>
             </aside>
         </section>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/constants.js"></script>
+        <script src="assets/js/main.js"></script>
         <script src="assets/js/tv.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/pong.js"></script>
-        <script src="http://emiliano.bocamuchas.org:8080/socket.io/socket.io.js"></script>
+        <script src="http://localhost:8080/socket.io/socket.io.js"></script>
         <script src="assets/js/client.js"></script>
     </body>
 </html>

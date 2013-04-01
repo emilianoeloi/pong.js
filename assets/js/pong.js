@@ -2,7 +2,7 @@ var WIDTH = 700;
 var HEIGHT = 500;
 var BALL_RADIUS = 20;
 var PAD_WIDTH = 8;
-var PAD_HEIGHT = 80;
+var PAD_HEIGHT = 100;
 var HALF_PAD_WIDTH = PAD_WIDTH / 2;
 var HALF_PA_HEIGHT = PAD_HEIGHT / 2;
 
@@ -11,7 +11,7 @@ var paddle2_vel;
 var w;
 var s;
 var _canvasContext;
-var CANVAS_ELEMENT_ID = 'tela';
+var CANVAS_ELEMENT_ID = 'pong';
 var _pause = false;
 var _colorPaddle1 = "White";
 
@@ -197,26 +197,22 @@ function getLetter(which){
 function changeLanguage(lang){
 
 }
-var tv;
-function getTV(){
-    if(!tv)
-        tv = new TV();
-    return tv;
-}
-var language;
-function setLanguage(language){
-    this.language = language;
-}
-function getLanguage(){
-    if(!language)
-        language = DEFAULT_LANGUAGE;
-    return language;
-}
 
 function loadScreen(){
+
     $(".terms-game-name").text(getLanguage().terms.gameName);
     $(".terms-reset-button").text(getLanguage().terms.resetButton);
     $(".terms-pause-button").text(getLanguage().terms.pauseButton);
+    $(".joystick.one .terms-joystick").text(getLanguage().terms.joystick+" "+getLanguage().terms.one);
+    $(".joystick.two .terms-joystick").text(getLanguage().terms.joystick+" "+getLanguage().terms.two);
+    $(".joystick .message").text(getLanguage().terms.takeJoystick);
+
+    if($(".joystick a").length > 0 ){
+        $(".joystick a").remove();
+    }
+
+    $(".joystick.one .message").after(getQRCode(id, 'one'));
+    $(".joystick.two .message").after(getQRCode(id, 'two'));
 
     var bgSelector = [];
     bgSelector.push("url(");
@@ -247,22 +243,8 @@ $(document).ready(function(){
     });
 
     $(".btn.lang").click(function(){
-       switch($(this).text().toLowerCase()){
-           case "es":
-               setLanguage(LANGUAGES.es);
-               break;
-           case "en":
-               setLanguage(LANGUAGES.en);
-               break;
-           case "pt":
-               setLanguage(LANGUAGES.pt);
-               break;
-           default:
-               setLanguage(DEFAULT_LANGUAGE);
-               break;
-
-       }
-        loadScreen();
+       setLanguage($(this).text().toLowerCase());
+       loadScreen();
     });
 
     loadScreen();

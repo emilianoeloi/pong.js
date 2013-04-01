@@ -1,0 +1,32 @@
+!!! 5
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, user-scalable=no")
+        link(rel='stylesheet', href='http://192.168.0.12/pong.js/assets/css/jquery.mobile.min.css')
+        link(rel='stylesheet', href='http://192.168.0.12/pong.js/assets/css/controle.css')
+        title ""
+        script(src='http://192.168.0.12/pong.js/assets/js/jquery.min.js')
+        script(src='http://192.168.0.12/pong.js/assets/js/jquery.mobile.min.js')
+        script(src='http://192.168.0.12:8080/socket.io/socket.io.js')
+        script(src='http://192.168.0.12/pong.js/assets/js/util.js')
+        script(src='http://192.168.0.12/pong.js/assets/js/constants.js')
+        script(src='http://192.168.0.12/pong.js/assets/js/main.js')
+        script(src='http://192.168.0.12/pong.js/assets/js/joystick.js')
+        script(type='text/javascript')
+            $(document).bind('pageinit', function() {
+                var socket = io.connect(URL_SOCKET);
+                var id = $('body').attr('id');
+
+                socket.emit('setId', id + 'mb');
+
+                setLanguage('#{_language}');
+                loadScreen('#{_joystick}');
+
+            });
+
+    body(id="#{_id}")
+        header
+            h1 ""
+        section
+            input(type="range", name="move", id="move", value="50", min="0", max="100", data-show-value="true", data-popup-enabled="true")

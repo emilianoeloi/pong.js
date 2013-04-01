@@ -12,7 +12,7 @@ div, section, footer, aside, header{
 .container{
     width: 1342px;
 }
-.tela{
+.screen{
     float:left;
     width: 780px;
     height: 500px;
@@ -90,10 +90,10 @@ div, section, footer, aside, header{
 }
 .lang.es{
     transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg); /* IE 9 */
-    -webkit-transform: rotate(-45deg); /* Safari and Chrome */
-    -o-transform: rotate(-45deg); /* Opera */
-    -moz-transform: rotate(-45deg); /* Firefox */
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
 }
 .lang.en{
     left: 50;
@@ -107,7 +107,44 @@ div, section, footer, aside, header{
     -o-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
 }
-#qr{
-    margin-left: 140px;
-    margin-top: 40px;
+/*JOYSTICK*/
+.joystick{
+    position: absolute;
+    width: 200px;
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+.joystick.one{
+    left:230;
+}
+.joystick.two{
+    left:570;
+}
+.message-error{
+    color: #ff0000;
+}
+.message-warning{
+    color: #df8505;
+}
+.message-success{
+    color: #00ff00;
+}
+
+.text.input{
+    border:0;
+    background-color: #000;
+    color: green;
+    font-family:"Courier New";
+    font-size: 1.2em;
+}
+
+.text.input.id{
+    position: absolute;
+    width: 185px;
+    top: 63;
+    left: 80;
 }
