@@ -2,7 +2,7 @@ var WIDTH = 700;
 var HEIGHT = 500;
 var BALL_RADIUS = 20;
 var PAD_WIDTH = 8;
-var PAD_HEIGHT = 100;
+var PAD_HEIGHT = 150;
 var HALF_PAD_WIDTH = PAD_WIDTH / 2;
 var HALF_PA_HEIGHT = PAD_HEIGHT / 2;
 
@@ -151,7 +151,12 @@ function changeColor(color){
     Dbg.log('_colorPaddle1', _colorPaddle1);
     _colorPaddle1 = color;
 }
-
+function setConnected(joystick){
+    Dbg.log('setConnected()',joystick);
+    $(".joystick."+joystick+" .message").text(getLanguage().terms.connected);
+    $(".joystick."+joystick+" .message").addClass("message-success");
+    $(".joystick."+joystick+" a").hide();
+}
 function addButton(){
     init();
     _pause = false;

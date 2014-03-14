@@ -1,6 +1,6 @@
-var URL = "http://192.168.0.12/pong.js/";
-var URL_SOCKET = "http://192.168.0.12:8080";
-var URL_EXPRESS = "http://192.168.0.12:8000/";
+var URL = "http://emiliano.bocamuchas.org/pong.js/";
+var URL_SOCKET = "http://emiliano.bocamuchas.org:8080";
+var URL_EXPRESS = "http://emiliano.bocamuchas.org:8000/";
 var IMG = "assets/img/";
 var JS = "assets/js/";
 var CSS = "assets/css";
@@ -17,7 +17,8 @@ var LANGUAGES = {"en":{"acronym":"en","name":"English", "terms":{
                     "loading": "Loading",
                     "player": "Player",
                     "one": "One",
-                    "two": "Two"} },
+                    "two": "Two",
+                    "phName": "Type your name"} },
                  "pt":{"acronym":"pt","name":"Português", "terms":{
                      "gameName":"Telejogo",
                      "resetButton":"Iniciar",
@@ -31,7 +32,8 @@ var LANGUAGES = {"en":{"acronym":"en","name":"English", "terms":{
                      "loading": "Carregando",
                      "player": "Jogador",
                      "one": "Um",
-                     "two": "Dois"} },
+                     "two": "Dois",
+                     "phName": "Digite seu nome"} },
                  "es":{"acronym":"es","name":"Españo", "terms":{
                      "gameName":"Tele-pong",
                      "resetButton":"Inicio",
@@ -45,5 +47,6 @@ var LANGUAGES = {"en":{"acronym":"en","name":"English", "terms":{
                      "loading": "Cargando",
                      "player": "Jugador",
                      "one": "Uno",
-                     "two": "Dos"} } };
+                     "two": "Dos",
+                     "phName": "Escriba su nombre"} } };
 var DEFAULT_LANGUAGE = LANGUAGES.pt;

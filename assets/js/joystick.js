@@ -31,11 +31,13 @@ var _chamadaBaixo = true;
         // position the popup centered 5px above the handle
         _positionPopup: function() {
             var pos = $("#move").val();
+	    var upKey = (globalPlayer == 'one') ? 'up' : 'w',
+                downKey = (globalPlayer == 'one') ? 'down' : 's';
             if(pos > 60){
                 if(_chamadaCima){
                     console.log(' pra cima ');
                     console.log('key down');
-                    $.get(pressUrl('up', 'down'), function() {});
+                    $.get(pressUrl(upKey, 'down'), function() {});
                     _chamadaCima = false;
                 }
                 _chamadaBaixo = true;
@@ -43,14 +45,14 @@ var _chamadaBaixo = true;
                 if(_chamadaBaixo){
                     console.log(' pra baixo ');
                     console.log('key down');
-                    $.get(pressUrl('down', 'down'), function() {});
+                    $.get(pressUrl(downKey, 'down'), function() {});
                     _chamadaBaixo = false;
                 }
                 _chamadaCima = true;
             }else if (pos > 40 && pos < 60){
                 console.log(' parar ');
                 console.log('key keyup');
-                $.get(pressUrl('up', 'up'), function() {});
+                $.get(pressUrl(upKey, 'up'), function() {});
                 _chamadaCima = true;
                 _chamadaBaixo = true;
                 
@@ -138,8 +140,9 @@ function pressUrl(key, direction){
     url.push(direction);
     return url.join('');
 }
-
+var globalPlayer = "";
 function loadScreen(player){
+    globalPlayer = player;
     var title = [];
     title.push(getLanguage().terms.player);
     title.push(" ");
@@ -156,4 +159,6 @@ function loadScreen(player){
     title.push(" - ");
     title.push(getLanguage().terms.gameName);
     $("title").text(title.join(''));
+    $(".header.title").text(title.join(''));
+    $("#name").attr('placeholder', getLanguage().terms.phName)
 }

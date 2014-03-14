@@ -17,3 +17,7 @@ socket.on('keyup', function (data) {
 socket.on('changeColor', function (data) {
     changeColor(data.color);
 });
+
+socket.on('setConnected', function (data) {
+    setConnected(data.joystick);
+});
